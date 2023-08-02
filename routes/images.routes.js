@@ -59,6 +59,7 @@ router.post('/upload-image', upload.single('profileImg'), (req, res, next) => {
                 }
             });
         }else{
+            
             const image = new Image({
                 _id: new mongoose.Types.ObjectId(),
                 user_id: req.body.user_id,

@@ -8,8 +8,13 @@ const dbConfig = require('./database/db.config');
 
 mongoose.Promise = global.Promise;
 mongoose.set("strictQuery", false);
-mongoose.connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`);
-
+//mongoose.connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`);
+mongoose.connect('mongodb+srv://r60jZirgWGQpuqMH:r60jZirgWGQpuqMH@cluster0.30yfs2v.mongodb.net/?retryWrites=true&w=majority')
+.then(()=>{
+    console.log("API user_image: Conectando a atlas...");
+}).catch((error)=>{
+    console.log(error);
+})
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());
