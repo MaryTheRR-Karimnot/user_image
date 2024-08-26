@@ -14,12 +14,22 @@ mongoose.Promise = global.Promise;
 mongoose.set("strictQuery", false);
 //mongoose.connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`);
 // Conecta a la base de datos de MongoDB utilizando una cadena de conexión (en este caso, a MongoDB Atlas)
-mongoose.connect('mongodb+srv://r60jZirgWGQpuqMH:r60jZirgWGQpuqMH@cluster0.30yfs2v.mongodb.net/?retryWrites=true&w=majority')
+/*mongoose.connect('mongodb+srv://r60jZirgWGQpuqMH:r60jZirgWGQpuqMH@cluster0.30yfs2v.mongodb.net/?retryWrites=true&w=majority')
 .then(()=>{
     console.log("API user_image: Conectando a atlas..."); // Mensaje de éxito si la conexión es exitosa
 }).catch((error)=>{
     console.log(error);  // Muestra un mensaje de error si la conexión falla
-})
+})*/
+mongoose.connect('mongodb://my-mongo-container:27017/test', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+      console.log("Conectado a MongoDB en el VPS...");
+  })
+  .catch((error) => {
+      console.log("Error al conectar a MongoDB:", error);
+  });
 
 // Crea una instancia de la aplicación Express
 const app = express();
